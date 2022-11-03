@@ -1,7 +1,9 @@
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Header from "../components/Header";
+import OrganizeByElements from "../components/OrganizeByElements";
+import OrganizeByStars from "../components/OrganizeByStars";
 import getCsvContent from "../utils/getCsvContent";
 
 export default function Home() {
@@ -9,16 +11,7 @@ export default function Home() {
   const [accountLevel, setAccountLevel] = useState("45");
   const [allCharacters, setAllCharacters] = useState([]);
   const [obtainedCharacters, setObtainedCharacters] = useState([]);
-
-  const backgroundTypes = {
-    "Anemo": "bg-[#3fb1b5]",
-    "Cryo": "bg-[#79d0e3]",
-    "Dendro": "bg-[#73a53b]",
-    "Electro": "bg-[#8556b7]",
-    "Geo": "bg-[#be964a]",
-    "Hydro": "bg-[#3f6fb4]",
-    "Pyro": "bg-[#c06544]"
-  };
+  const [organizeBy, setOrganizeBy] = useState("stars");
 
   useEffect(() => {
     (async () => await getCsvContent(setAllCharacters))();
@@ -36,20 +29,24 @@ export default function Home() {
     }
   }
 
+  function hanldeToggleLayout(event) {
+    const { value } = event.target;
+
+    setOrganizeBy(value);
+  }
+
   return (
-    <div className="w-full h-[100vh] flex flex-col items-center">
+    <div className="w-full h-full flex flex-col items-center">
       <Head>
         <title>Genshin Impact Account Organizer</title>
         <meta name="description" content="Genshin Impact account organizer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="w-4/5 h-full flex flex-col self-center items-center">
-        <h1 className="mb-8 text-center text-3xl font-semibold">
-          Genshin Impact Account Organizer
-        </h1>
+      <main className="w-full min-h-[100vh] flex flex-col self-center items-center">
+        <Header />
 
-        <div className="w-4/5 flex justify-evenly mb-6 text-xl">
+        <div className="w-full flex justify-evenly pt-3 mb-6 text-2xl">
           <p>
             <span className="font-semibold">Conta</span>: {accountName}
           </p>
@@ -57,40 +54,33 @@ export default function Home() {
           <p>
             <span className="font-semibold">AR</span>: {accountLevel}
           </p>
-        </div>
 
-        <div className="w-full mb-4 text-center text-2xl">
           <p>
-            Personagens obtidos: {`${obtainedCharacters.length}/${allCharacters.length}`}
+            <span className="font-semibold">Personagens obtidos</span>: {`${obtainedCharacters.length}/${allCharacters.length}`}
           </p>
         </div>
 
-        <div className="w-full max-w-[1000px] flex flex-wrap justify-center">
-          {allCharacters
-            .map(({ name, imgUrl, type }) => {
-              const checkObtained = obtainedCharacters.includes(name);
-              const applySaturate = !checkObtained && "saturate-0";
-
-              return (
-                <button
-                  className={`${backgroundTypes[type]} ${applySaturate} m-3 cursor-pointer border border-yellow-500 rounded shadow-custom hover:scale-125 transition-transform`}
-                  id={name}
-                  key={imgUrl}
-                  onClick={handleToggleCharacter}
-                  title={name}
-                  type="button"
-                >
-                  <Image
-                    alt={`Imagem do(a) personagem ${name}`}
-                    className={`${applySaturate}`}
-                    height={70}
-                    src={imgUrl}
-                    width={70}
-                  />
-                </button>
-              );
-            })}
+        <div className="w-2/5 mb-4">
+          <select
+            className="bg-gray-50 border text-center pr-5 border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            id="select-organization"
+            onChange={hanldeToggleLayout}
+          >
+            <option value="stars">Organizar por estrelas</option>
+            <option value="elements">Organizar por elemento</option>
+          </select>
         </div>
+
+        {organizeBy === "stars" ? (
+          <OrganizeByStars
+            allCharacters={allCharacters}
+            obtainedCharacters={obtainedCharacters}
+            handleToggleCharacter={handleToggleCharacter}
+          />
+        ) : (
+          <OrganizeByElements />
+        )}
+
       </main>
 
       <footer className="w-full flex justify-center whitespace-normal">
