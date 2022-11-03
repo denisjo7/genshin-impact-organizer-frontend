@@ -5,7 +5,11 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {}
+    extend: {
+      boxShadow: {
+        "custom": "2px 4px 3px 0px rgba(161, 161, 161, 1)"
+      }
+    }
   },
   plugins: [require("@tailwindcss/forms"), require("tailwind-scrollbar")]
 };
