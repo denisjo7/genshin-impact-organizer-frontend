@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import getCsvContent from "../utils/getCsvContent";
 
@@ -66,34 +67,40 @@ export default function Home() {
 
         <div className="w-full max-w-[1000px] flex flex-wrap justify-center">
           {allCharacters
-            .map(({ name, imgUrl, type }) => (
-              <button
-                className={`${backgroundTypes[type]} m-3 cursor-pointer border border-yellow-500 rounded shadow-custom hover:scale-125 transition-transform`}
-                id={name}
-                key={imgUrl}
-                onClick={handleToggleCharacter}
-                title={name}
-                type="button"
-              >
-                <Image
-                  alt={`Imagem do(a) personagem ${name}`}
-                  height={70}
-                  src={imgUrl}
-                  width={70}
-                />
-              </button>
-            ))}
+            .map(({ name, imgUrl, type }) => {
+              const checkObtained = obtainedCharacters.includes(name);
+              const applySaturate = !checkObtained && "saturate-0";
+
+              return (
+                <button
+                  className={`${backgroundTypes[type]} ${applySaturate} m-3 cursor-pointer border border-yellow-500 rounded shadow-custom hover:scale-125 transition-transform`}
+                  id={name}
+                  key={imgUrl}
+                  onClick={handleToggleCharacter}
+                  title={name}
+                  type="button"
+                >
+                  <Image
+                    alt={`Imagem do(a) personagem ${name}`}
+                    className={`${applySaturate}`}
+                    height={70}
+                    src={imgUrl}
+                    width={70}
+                  />
+                </button>
+              );
+            })}
         </div>
       </main>
 
       <footer className="w-full flex justify-center whitespace-normal">
-        <a
+        <Link
           href="https://github.com/denisjo7"
           target="_blank"
           rel="noopener noreferrer"
         >
           Created with 💜 by <span className="text-teal-600 font-semibold">Denis Jonathan</span>
-        </a>
+        </Link>
       </footer>
     </div>
   );
