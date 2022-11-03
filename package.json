@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "yarn get_characters && next dev",
     "build": "next build",
-    "start": "next start",
-    "test:lint": "next lint"
+    "start": "yarn get_characters && next start",
+    "test:lint": "next lint",
+    "get_characters": "python3 -m venv .venv && python3 -m pip install -r requirements.txt && python3 src/scripts/get_characters.py"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.3",
