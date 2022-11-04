@@ -1,32 +1,53 @@
-import Image from "next/image";
 import { useContext } from "react";
 import AppContext from "../../context/AppContext";
+import charactersStars from "../../utils/charactersStars";
+import CharacterCard from "../CharacterCard";
 import styles from "./styles.module.css";
 
 function OrganizedByStars() {
-  const { allCharacters, handleToggleCharacter } = useContext(AppContext);
+  const { allCharacters } = useContext(AppContext);
+
+  const { five, four } = charactersStars;
+  const fiveStarsChars = allCharacters.filter(({ name }) => five.includes(name));
+  const fourStarsChars = allCharacters.filter(({ name }) => four.includes(name));
 
   return (
-    <div className={styles.temp}>
-      {allCharacters
-        .map(({ name, imgUrl }) => {
-          return (
-            <button
-              id={name}
-              key={imgUrl}
-              onClick={handleToggleCharacter}
-              title={name}
-              type="button"
-            >
-              <Image
-                alt={`Imagem do(a) personagem ${name}`}
-                height={100}
-                src={imgUrl}
-                width={100}
+    <div className={styles.container}>
+      <div className={styles["five-stars"]}>
+        <div className={styles["title-container"]}>
+          <span className={styles.title}>⭐⭐⭐⭐⭐</span>
+        </div>
+
+        <div className={styles["cards-container"]}>
+          {fiveStarsChars
+            .map(({ name, imgUrl, type }, index) => (
+              <CharacterCard
+                key={`${name}__${index}`}
+                imgUrl={imgUrl}
+                name={name}
+                type={type}
               />
-            </button>
-          );
-        })}
+            ))}
+        </div>
+      </div>
+
+      <div className={styles["five-stars"]}>
+        <div className={styles["title-container"]}>
+          <span className={styles.title}>⭐⭐⭐⭐</span>
+        </div>
+
+        <div className={styles["cards-container"]}>
+          {fourStarsChars
+            .map(({ name, imgUrl, type }, index) => (
+              <CharacterCard
+                key={`${name}__${index}`}
+                imgUrl={imgUrl}
+                name={name}
+                type={type}
+              />
+            ))}
+        </div>
+      </div>
     </div>
   );
 }
