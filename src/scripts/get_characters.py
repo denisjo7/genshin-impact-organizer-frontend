@@ -14,12 +14,6 @@ def get_characters_infos():
     else:
         html = BeautifulSoup(page.read(), "html.parser")
 
-        names_to_exclude = [
-            "Traveler (Dendro)",
-            "Traveler (Electro)",
-            "Traveler (Geo)",
-        ]
-
         characters_source = html.find_all("a", {"class": "character-portrait"})
 
         characters = []
@@ -36,7 +30,6 @@ def get_characters_infos():
             char_name = (
                 char.find("img", {"class": "character-icon"})
                 .get("alt")
-                .replace(" (Anemo)", "")
             )
 
             char_img_url = char.find("img", {"class": "character-icon"}).get(
@@ -60,7 +53,9 @@ def get_characters_infos():
                 "weapon_icon": char_weapon_icon,
             }
 
-            if char_name not in names_to_exclude:
+            check_name = char_name.startswith('Traveler')
+
+            if check_name == False:
                 characters.append(char_infos)
 
         csv_file_name = "public/all_characters.csv"
