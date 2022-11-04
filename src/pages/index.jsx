@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import OrganizedByStars from "../components/OrganizedByStars";
 import OrganizedByElements from "../components/OrganizedByElements";
 import AppContext from "../context/AppContext";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const {
@@ -17,17 +18,17 @@ export default function Home() {
   } = useContext(AppContext);
 
   return (
-    <div>
+    <div className={styles.container}>
       <Head>
         <title>Genshin Impact Account Organizer</title>
         <meta name="description" content="Genshin Impact account organizer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className={styles["main-section"]}>
         <Header />
 
-        <div>
+        <div className={styles["account-section"]}>
           <p>
             <span>Conta</span>: {accountName}
           </p>

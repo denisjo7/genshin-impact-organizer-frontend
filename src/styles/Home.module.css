@@ -1,0 +1,23 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.main-section {
+  position: relative;
+}
+
+.main-section p {
+  font-size: var(--font-size-md);
+}
+
+.main-section p span {
+  font-weight: var(--font-weight-regular);
+}
+
+.account-section {
+  display: flex;
+  justify-content: space-evenly;
+}

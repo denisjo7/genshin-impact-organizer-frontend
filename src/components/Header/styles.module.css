@@ -1,13 +1,14 @@
 .container {
   background-color: orange;
-  padding: 0 16px;
+  padding: var(--spacing-xxxs) 0;
   position: sticky;
   text-align: center;
   top: 0;
   width: 100%;
-  z-index: 5;
+  z-index: var(--depth-five);
 }
 
 .title {
-  font-size: 32px;
+  font-size: var(--font-size-lg);
+  margin: 0;
 }
