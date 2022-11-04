@@ -1,0 +1,45 @@
+.card {
+  border: none;
+  border-radius: 9999px;
+  box-shadow: 0 3px 4px 2px rgb(78 78 78);
+  height: 120px;
+  margin: 12px;
+  width: 120px;
+}
+
+.anemo {
+  background-color: #3fb1b5;
+}
+
+.cryo {
+  background-color: #79d0e3;
+}
+
+.dendro {
+  background-color: #73a53b;
+}
+
+.electro {
+  background-color: #8556b7;
+}
+
+.geo {
+  background-color: #be964a;
+}
+
+.hydro {
+  background-color: #3f6fb4;
+}
+
+.pyro {
+  background-color: #c06544;
+}
+
+.card-img {
+  border: 2px solid gold;
+  border-radius: 9999px;
+}
+
+.card-gray {
+  filter: saturate(0);
+}
