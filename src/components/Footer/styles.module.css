@@ -1,0 +1,9 @@
+.footer {
+  background-color: orange;
+  bottom: 0;
+  height: fit-content;
+  padding-top: var(--spacing-quarck);
+  position: sticky;
+  text-align: center;
+  width: 100%;
+}

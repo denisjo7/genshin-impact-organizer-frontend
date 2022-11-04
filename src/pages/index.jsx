@@ -57,15 +57,7 @@ export default function Home() {
         {organizeBy === "elements" && <OrganizedByElements />}
       </main>
 
-      <footer>
-        <Link
-          href="https://github.com/denisjo7"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Created with 💜 by <span className="text-teal-600 font-semibold">Denis Jonathan</span>
-        </Link>
-      </footer>
+      <Footer />
     </div>
   );
 }
