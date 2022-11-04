@@ -1,39 +1,20 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import Header from "../components/Header";
 import OrganizedByStars from "../components/OrganizedByStars";
 import OrganizedByElements from "../components/OrganizedByElements";
-import getCsvContent from "../utils/getCsvContent";
+import AppContext from "../context/AppContext";
 
 export default function Home() {
-  const [accountName, setAccountName] = useState("Fulano");
-  const [accountLevel, setAccountLevel] = useState("45");
-  const [allCharacters, setAllCharacters] = useState([]);
-  const [obtainedCharacters, setObtainedCharacters] = useState([]);
-  const [organizeBy, setOrganizeBy] = useState("stars");
-
-  useEffect(() => {
-    (async () => await getCsvContent(setAllCharacters))();
-  }, []);
-
-  function handleToggleCharacter(event) {
-    const characterName = event.target.closest("button").id;
-
-    if (obtainedCharacters.includes(characterName)) {
-      const filteredNames = obtainedCharacters.filter((name) => name !== characterName);
-
-      setObtainedCharacters([...filteredNames]);
-    } else {
-      setObtainedCharacters([...obtainedCharacters, characterName]);
-    }
-  }
-
-  function hanldeToggleLayout(event) {
-    const { value } = event.target;
-
-    setOrganizeBy(value);
-  }
+  const {
+    accountName,
+    accountLevel,
+    allCharacters,
+    obtainedCharacters,
+    organizeBy,
+    hanldeToggleLayout
+  } = useContext(AppContext);
 
   return (
     <div>
@@ -70,15 +51,9 @@ export default function Home() {
           </select>
         </div>
 
-        {organizeBy === "stars" ? (
-          <OrganizedByStars
-            allCharacters={allCharacters}
-            obtainedCharacters={obtainedCharacters}
-            handleToggleCharacter={handleToggleCharacter}
-          />
-        ) : (
-          <OrganizedByElements />
-        )}
+        {organizeBy === "stars" && <OrganizedByStars />}
+
+        {organizeBy === "elements" && <OrganizedByElements />}
       </main>
 
       <footer>

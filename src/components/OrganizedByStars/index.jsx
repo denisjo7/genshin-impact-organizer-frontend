@@ -1,15 +1,15 @@
 import Image from "next/image";
-import backgroundTypes from "../../utils/backgroundTypes";
+import { useContext } from "react";
+import AppContext from "../../context/AppContext";
 import styles from "./styles.module.css";
 
-function OrganizedByStars({ allCharacters, obtainedCharacters, handleToggleCharacter }) {
+function OrganizedByStars() {
+  const { allCharacters, handleToggleCharacter } = useContext(AppContext);
+
   return (
     <div className={styles.temp}>
       {allCharacters
-        .map(({ name, imgUrl, type }) => {
-          const checkObtained = obtainedCharacters.includes(name);
-          const applySaturate = !checkObtained && "saturate-0";
-
+        .map(({ name, imgUrl }) => {
           return (
             <button
               id={name}
