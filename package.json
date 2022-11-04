@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "yarn get_characters && next dev",
+    "dev": "next dev",
     "build": "next build",
-    "start": "yarn get_characters && next start",
+    "start": "next start",
     "test:lint": "next lint",
     "get_characters": "python3 -m venv .venv && python3 -m pip install -r requirements.txt && python3 src/scripts/get_characters.py"
   },
