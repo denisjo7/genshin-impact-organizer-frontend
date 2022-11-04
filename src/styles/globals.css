@@ -2,5 +2,105 @@
 
 body {
   background-color: rgb(226 232 240);
-  font-family: Roboto, sans-serif;
+  box-sizing: border-box;
+  font-family: var(--font-family-base);
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* spacing */
+  --spacing-quarck: 0.25rem; /* 4px */
+  --spacing-nano: 0.5rem; /* 8px */
+  --spacing-xxxs: 1rem; /* 16px */
+  --spacing-xxs: 1.5rem; /* 24px */
+  --spacing-xs: 2rem; /* 32px */
+  --spacing-sm: 2.5rem; /* 40px */
+  --spacing-md: 3rem; /* 48px */
+  --spacing-lg: 3.5rem; /* 56px */
+  --spacing-xl: 4rem; /* 64px */
+  --spacing-xxl: 5rem; /* 80px */
+  --spacing-xxxl: 7.5rem; /* 120px */
+
+  /* spacing inset */
+  --spacing-inset-quarck: 0.25rem; /* 4px */
+  --spacing-inset-nano: 0.5rem; /* 8px */
+  --spacing-inset-xs: 1rem; /* 16px */
+  --spacing-inset-sm: 1.5rem; /* 24px */
+  --spacing-inset-md: 2rem; /* 32px */
+  --spacing-inset-lg: 2.5rem; /* 40px */
+
+  /* shadow levels */
+  --shadow-level-1: 0 0.25rem 0.5rem 0; /* 0 4px 8px 0 */
+  --shadow-level-2: 0 0.5rem 1.5rem 0; /* 0 8px 24px 0 */
+  --shadow-level-3: 0 1rem 2rem 0; /* 0 16px 32px 0 */
+  --shadow-level-4: 0 1rem 3rem 0; /* 0 15px 48px 0 */
+
+  /* shadow colors */
+  --shadow-neutral-color: rgb(0 0 0 / 15%);
+  --shadow-color-1: rgb(247 158 27 / 25%);
+  --shadow-color-2: rgb(42 19 85 / 25%);
+  --shadow-color-3: rgb(0 74 66 / 25%);
+  --shadow-color-4: rgb(115 9 9 / 25%);
+
+  /* icon sizes */
+  --size-icon-xxxs: 0.75rem; /* 12px */
+  --size-icon-xxs: 0.875rem; /* 14px */
+  --size-icon-xs: 1rem; /* 16px */
+  --size-icon-s: 1.25rem; /* 20px */
+  --size-icon-m: 1.5rem; /* 24px */
+  --size-icon-l: 2rem; /* 32px */
+  --size-icon-xl: 2.5rem; /* 40px */
+  --size-icon-xxl: 3rem; /* 48px */
+  --size-icon-xxxl: 4rem; /* 64px */
+
+  /* fonts */
+  --font-family-base: "Roboto", sans-serif;
+
+  /* font size */
+  --font-size-xxxs: 0.75rem; /* 12px */
+  --font-size-xxs: 0.875rem; /* 14px */
+  --font-size-xs: 1rem; /* 16px */
+  --font-size-sm: 1.25rem; /* 20px */
+  --font-size-md: 1.5rem; /* 24px */
+  --font-size-lg: 2rem; /* 32px */
+  --font-size-xl: 2.5rem; /* 40px */
+  --font-size-xxl: 3rem; /* 48px */
+  --font-size-xxxl: 4rem; /* 64px */
+  --font-size-display: 5rem; /* 80px */
+
+  /* font weight */
+  --font-weight-regular: 500;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+
+  /* line height */
+  --line-height-default: 100%;
+  --line-height-md: 115%;
+  --line-height-lg: 150%;
+  --line-height-xl: 170%;
+
+  /* border radius */
+  --border-radius-none: 0;
+  --border-radius-nano: 0.25rem; /* 4px */
+  --border-radius-sm: 0.5rem; /* 8px */
+  --border-radius-md: 1rem; /* 16px */
+  --border-radius-lg: 1.5rem; /* 24px */
+  --border-radius-pill: 31.25rem; /* 500px */
+  --border-radius-circle: 50%;
+
+  /* border width */
+  --border-width-none: 0;
+  --border-width-hairline: 0.063rem; /* 1px */
+  --border-width-thin: 0.125rem; /* 2px */
+  --border-width-thick: 0.25rem; /* 4px */
+
+  /* depths */
+  --depth-negative: -1;
+  --depth-zero: 0;
+  --depth-one: 1;
+  --depth-two: 2;
+  --depth-three: 3;
+  --depth-four: 4;
+  --depth-five: 5;
 }
