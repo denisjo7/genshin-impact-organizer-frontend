@@ -2,8 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
-import OrganizeByElements from "../components/OrganizeByElements";
-import OrganizeByStars from "../components/OrganizeByStars";
+import OrganizedByStars from "../components/OrganizedByStars";
+import OrganizedByElements from "../components/OrganizedByElements";
 import getCsvContent from "../utils/getCsvContent";
 
 export default function Home() {
@@ -36,33 +36,32 @@ export default function Home() {
   }
 
   return (
-    <div className="w-full h-full flex flex-col items-center">
+    <div>
       <Head>
         <title>Genshin Impact Account Organizer</title>
         <meta name="description" content="Genshin Impact account organizer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="w-full min-h-[100vh] flex flex-col self-center items-center">
+      <main>
         <Header />
 
-        <div className="w-full flex justify-evenly pt-3 mb-6 text-2xl">
+        <div>
           <p>
-            <span className="font-semibold">Conta</span>: {accountName}
+            <span>Conta</span>: {accountName}
           </p>
 
           <p>
-            <span className="font-semibold">AR</span>: {accountLevel}
+            <span>AR</span>: {accountLevel}
           </p>
 
           <p>
-            <span className="font-semibold">Personagens obtidos</span>: {`${obtainedCharacters.length}/${allCharacters.length}`}
+            <span>Personagens obtidos</span>: {`${obtainedCharacters.length}/${allCharacters.length}`}
           </p>
         </div>
 
-        <div className="w-2/5 mb-4">
+        <div>
           <select
-            className="bg-gray-50 border text-center pr-5 border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             id="select-organization"
             onChange={hanldeToggleLayout}
           >
@@ -72,18 +71,17 @@ export default function Home() {
         </div>
 
         {organizeBy === "stars" ? (
-          <OrganizeByStars
+          <OrganizedByStars
             allCharacters={allCharacters}
             obtainedCharacters={obtainedCharacters}
             handleToggleCharacter={handleToggleCharacter}
           />
         ) : (
-          <OrganizeByElements />
+          <OrganizedByElements />
         )}
-
       </main>
 
-      <footer className="w-full flex justify-center whitespace-normal">
+      <footer>
         <Link
           href="https://github.com/denisjo7"
           target="_blank"

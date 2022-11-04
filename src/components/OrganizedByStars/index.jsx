@@ -1,9 +1,10 @@
 import Image from "next/image";
-import backgroundTypes from "../utils/backgroundTypes";
+import backgroundTypes from "../../utils/backgroundTypes";
+import styles from "./styles.module.css";
 
-function OrganizeByStars({ allCharacters, obtainedCharacters, handleToggleCharacter }) {
+function OrganizedByStars({ allCharacters, obtainedCharacters, handleToggleCharacter }) {
   return (
-    <div className="w-full max-w-[1000px] flex flex-wrap justify-center">
+    <div className={styles.temp}>
       {allCharacters
         .map(({ name, imgUrl, type }) => {
           const checkObtained = obtainedCharacters.includes(name);
@@ -11,7 +12,6 @@ function OrganizeByStars({ allCharacters, obtainedCharacters, handleToggleCharac
 
           return (
             <button
-              className={`${backgroundTypes[type]} ${applySaturate} h-full overflow-scroll m-3 cursor-pointer border border-yellow-500 rounded-full shadow-custom hover:scale-125 transition-transform`}
               id={name}
               key={imgUrl}
               onClick={handleToggleCharacter}
@@ -20,7 +20,6 @@ function OrganizeByStars({ allCharacters, obtainedCharacters, handleToggleCharac
             >
               <Image
                 alt={`Imagem do(a) personagem ${name}`}
-                className={`${applySaturate} rounded-full`}
                 height={100}
                 src={imgUrl}
                 width={100}
@@ -32,4 +31,4 @@ function OrganizeByStars({ allCharacters, obtainedCharacters, handleToggleCharac
   );
 }
 
-export default OrganizeByStars;
+export default OrganizedByStars;

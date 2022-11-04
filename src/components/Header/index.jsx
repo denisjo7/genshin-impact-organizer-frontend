@@ -1,7 +1,9 @@
+import styles from "./styles.module.css";
+
 function Header() {
   return (
-    <div className="w-full sticky top-0 z-10 py-4 bg-orange-400 text-center">
-      <h1 className="text-3xl font-semibold">
+    <div className={styles.container}>
+      <h1 className={styles.title}>
         Genshin Impact Account Organizer
       </h1>
     </div>

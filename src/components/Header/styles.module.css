@@ -1,0 +1,15 @@
+.container {
+  background-color: orange;
+  padding: 0 16px;
+  position: sticky;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+}
+
+/* text-3xl font-semibold */
+
+.title {
+  font-size: 32px;
+}
